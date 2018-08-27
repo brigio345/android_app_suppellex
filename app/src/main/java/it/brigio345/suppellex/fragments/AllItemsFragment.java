@@ -74,8 +74,15 @@ public class AllItemsFragment extends Fragment {
                    expandableListView.setItemChecked(groupPosition,
                            !expandableListView.isItemChecked(groupPosition));
 
-                   if (expandableListView.getCheckedItemCount() == 0)
+
+                   int checkedItemCount = expandableListView.getCheckedItemCount();
+                   if (checkedItemCount == 1) {
+                       actionMode.getMenu().findItem(R.id.menu_item_edit).setVisible(true);
+                   } else if (checkedItemCount == 2) {
+                       actionMode.getMenu().findItem(R.id.menu_item_edit).setVisible(false);
+                   } else if (checkedItemCount == 0) {
                        actionMode.finish();
+                   }
 
                    return true;
                }
