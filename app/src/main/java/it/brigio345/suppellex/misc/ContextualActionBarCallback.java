@@ -73,11 +73,7 @@ public class ContextualActionBarCallback implements ActionMode.Callback {
                                 for (int i = checkedItemPositions.size() - 1; i != -1; i--)
                                     if (checkedItemPositions.valueAt(i))
                                         storage.removeItem(checkedItemPositions.keyAt(i));
-                            }
-                        })
-                        .setOnDismissListener(new DialogInterface.OnDismissListener() {
-                            @Override
-                            public void onDismiss(DialogInterface dialog) {
+
                                 currentMode.finish();
                             }
                         });
