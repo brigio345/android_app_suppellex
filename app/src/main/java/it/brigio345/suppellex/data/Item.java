@@ -25,7 +25,7 @@ public class Item {
         setToAdd();
     }
 
-    void setToAdd() {
+    private void setToAdd() {
         toAdd = needed - available > 0 ? needed - available : 0;
     }
 

@@ -137,7 +137,7 @@ public class Storage {
         updateToAddItems(item, oldToAdd);
     }
 
-    public void updateToAddItems(Item item, boolean oldToAdd) {
+    private void updateToAddItems(Item item, boolean oldToAdd) {
         if (item.isToAdd() != oldToAdd) {
             if (oldToAdd)
                 toAddItems.remove(item);
