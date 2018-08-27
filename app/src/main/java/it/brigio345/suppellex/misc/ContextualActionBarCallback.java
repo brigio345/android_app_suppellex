@@ -151,6 +151,7 @@ public class ContextualActionBarCallback implements ActionMode.Callback {
                                         storage.editItem(itemPosition, name,
                                                 Integer.parseInt(neededStr),
                                                 Integer.parseInt(availableStr), timeDependant);
+                                        dialog.dismiss();
                                     } catch (DuplicateItemException die) {
                                         Toast.makeText(mainActivity,
                                                 String.format(mainActivity.getString(
