@@ -89,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
                 .setNegativeButton(R.string.cancel, null);
 
         final AlertDialog dialog = builder.create();
+        final InputMethodManager inputMethodManager =
+                (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
         dialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
@@ -137,6 +139,8 @@ public class MainActivity extends AppCompatActivity {
                                 case KeyEvent.KEYCODE_DPAD_CENTER:
                                 case KeyEvent.KEYCODE_ENTER:
                                     button.performClick();
+                                    inputMethodManager.toggleSoftInput(
+                                            InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
                                     return true;
                                 default:
                                     break;
@@ -149,12 +153,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton fab = findViewById(R.id.floatingactionbutton_main);
+        final FloatingActionButton fab = findViewById(R.id.floatingactionbutton_main);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nameET.requestFocus();
                 dialog.show();
+
+                nameET.requestFocus();
+                inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
             }
         });
 
