@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Suppellex</string>
+    <string name="needed">Needed</string>
+    <string name="available">Available</string>
+    <string name="to_add">To add</string>
+    <string name="all">All</string>
+    <string name="item_name">Item name</string>
+    <string name="error_empty_fields">Error: complete all fields</string>
+    <string name="error_duplicate">Error: %1$s already present</string>
+    <string name="delete">Delete</string>
+    <string name="delete_confirmation">Delete confirmation</string>
+    <string name="delete_confirmation_message">Do you really want to delete the selected item(s)?</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="new_item">New item</string>
+    <string name="time_dependent">Time dependent</string>
+    <string name="needed_number">Needed: %1$d</string>
+    <string name="available_number">Available: %1$d</string>
+    <string name="to_add_number">To add: %1$d</string>
+    <string name="new_available">New available quantity</string>
+    <string name="edit">Edit</string>
+</resources>

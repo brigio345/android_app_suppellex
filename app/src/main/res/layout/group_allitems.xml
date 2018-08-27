@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:theme="@style/AppTheme">
+
+    <android.support.v7.widget.CardView
+        style="@style/CardView.MyTheme"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_margin="4dp"
+        android:padding="4dp"
+        android:foreground="@drawable/selector_listview">
+
+        <TextView
+            android:id="@+id/textview_allitemsrow_itemname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|start"
+            android:padding="8dp"
+            android:textAppearance="@android:style/TextAppearance.Material.Title" />
+
+        <TextView
+            android:id="@+id/textview_allitemsrow_needed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:padding="16dp"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+
+        <TextView
+            android:id="@+id/textview_allitemsrow_available"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:padding="16dp"
+            android:paddingEnd="70dp"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+
+    </android.support.v7.widget.CardView>
+</FrameLayout>

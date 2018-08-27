@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#f57f17</color>
+    <color name="colorPrimaryDark">#ef6c00</color>
+    <color name="colorAccent">#f44336</color>
+    <color name="colorPrimarySelected">#ffa000</color>
+    <color name="colorPrimaryDarkSelected">#FF8F00</color>
+    <color name="colorCardBackground">#ffb300</color>
+    <color name="colorSelectedShadow">#41000000</color>
+</resources>

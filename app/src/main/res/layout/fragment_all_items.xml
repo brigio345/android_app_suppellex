@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ExpandableListView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/listview_all_items"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:choiceMode="multipleChoice"
+    android:descendantFocusability="beforeDescendants"
+    android:divider="@null"
+    android:dividerHeight="0dp"
+    android:groupIndicator="@null"
+    android:nestedScrollingEnabled="true"
+    android:scrollbars="vertical" />

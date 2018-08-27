@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Suppellex</string>
+    <string name="needed">Necessari</string>
+    <string name="available">Disponibili</string>
+    <string name="to_add">Da aggiungere</string>
+    <string name="all">Tutto</string>
+    <string name="item_name">Nome oggetto</string>
+    <string name="delete">Elimina</string>
+    <string name="delete_confirmation">Conferma eliminazione</string>
+    <string name="delete_confirmation_message">Vuoi davvero eliminare gli oggetti selezionati?</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Annulla</string>
+    <string name="new_item">Nuovo oggetto</string>
+    <string name="time_dependent">Dipendente dal tempo</string>
+    <string name="needed_number">Necessari: %1$d</string>
+    <string name="available_number">Disponibili: %1$d</string>
+    <string name="to_add_number">Da aggiungere: %1$d</string>
+    <string name="error_duplicate">Errore: %1$s già presente</string>
+    <string name="error_empty_fields">Errore: riempi tutti i campi</string>
+    <string name="new_available">Nuova quantità disponibile</string>
+    <string name="edit">Modifica</string>
+</resources>
