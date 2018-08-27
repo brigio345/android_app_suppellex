@@ -3,7 +3,6 @@ package it.brigio345.suppellex.fragments;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -74,7 +73,6 @@ public class AllItemsFragment extends Fragment {
                    expandableListView.setItemChecked(groupPosition,
                            !expandableListView.isItemChecked(groupPosition));
 
-
                    switch (expandableListView.getCheckedItemCount()) {
                        case 1:
                            actionMode.getMenu().findItem(R.id.menu_item_edit).setVisible(true);
@@ -120,7 +118,7 @@ public class AllItemsFragment extends Fragment {
                         break;
                     }
 
-                ((AppCompatActivity) getActivity()).startSupportActionMode(callback);
+                mainActivity.startSupportActionMode(callback);
 
                 expandableListView.setItemChecked(position,
                         !expandableListView.isItemChecked(position));
