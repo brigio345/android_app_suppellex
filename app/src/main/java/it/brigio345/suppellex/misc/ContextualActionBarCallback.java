@@ -42,6 +42,8 @@ public class ContextualActionBarCallback implements ActionMode.Callback {
                 ContextCompat.getColor(mainActivity, R.color.colorPrimarySelected));
         mode.getMenuInflater().inflate(R.menu.menu_context, menu);
 
+        mode.setTitle("1");
+
         actionMode = mode;
 
         return true;
