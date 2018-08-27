@@ -148,7 +148,7 @@ public class ContextualActionBarCallback implements ActionMode.Callback {
                                     try {
                                         // remove commas since data will be saved as CSV
                                         name = name.replaceAll(",", ".");
-                                        storage.updateItem(itemPosition, name,
+                                        storage.editItem(itemPosition, name,
                                                 Integer.parseInt(neededStr),
                                                 Integer.parseInt(availableStr), timeDependant);
                                     } catch (DuplicateItemException die) {

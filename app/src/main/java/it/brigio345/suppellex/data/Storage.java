@@ -34,6 +34,9 @@ public class Storage {
                 toAddItems.add(item);
     }
 
+    /*
+     * Print to file data contained in "item" List using CSV format
+     */
     public void saveToFile(FileOutputStream fos) {
         try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos))) {
             Item item;
@@ -48,6 +51,9 @@ public class Storage {
         }
     }
 
+    /*
+     * Read data from CSV formatted file
+     */
     public void loadFromFile(FileInputStream fis) {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(fis))) {
             String line;
@@ -56,13 +62,19 @@ public class Storage {
             while ((line = br.readLine()) != null) {
                 tokens = line.split(",");
 
-                item = new Item(tokens[0], Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]),
-                        Boolean.parseBoolean(tokens[3]));
+                try {
+                    item = new Item(tokens[0], Integer.parseInt(tokens[1]),
+                            Integer.parseInt(tokens[2]), Boolean.parseBoolean(tokens[3]));
 
-                items.add(item);
+                    items.add(item);
 
-                if (item.isToAdd())
-                    toAddItems.add(item);
+                    if (item.isToAdd())
+                        toAddItems.add(item);
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                } catch (IndexOutOfBoundsException e) {
+                    e.printStackTrace();
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -81,62 +93,57 @@ public class Storage {
         return items.get(index);
     }
 
-    public void updateItem(int index, String name, int needed, int available, boolean timeDependent)
+    /*
+     * Edit the item identified by the index
+     * If the new name corresponds to another existing item, throw a DuplicateItemException
+     */
+    public void editItem(int index, String name, int needed, int available, boolean timeDependent)
         throws DuplicateItemException {
-        Item it = items.get(index);
+        Item item = items.get(index);
 
-        if (!it.getName().equals(name)) {
+        if (!item.getName().equals(name)) {
             for (Item i : items)
                 if (i.getName().equals(name))
                     throw new DuplicateItemException(name);
 
-            it.setName(name);
+            item.setName(name);
         }
 
-        it.setTimeDependent(timeDependent);
+        item.setTimeDependent(timeDependent);
 
-        boolean oldNeeded = it.isToAdd();
+        boolean oldNeeded = item.isToAdd();
 
-        if (needed != -1)
-            it.setNeeded(needed);
+        item.setNeeded(needed);
+        item.setAvailable(available);
 
-        if (available != -1)
-            it.setAvailable(available);
-
-        boolean newNeeded = it.isToAdd();
-
-        if (newNeeded != oldNeeded) {
-            if (newNeeded)
-                toAddItems.add(it);
-
-            else
-                toAddItems.remove(it);
-        }
+        updateToAddItems(item, oldNeeded);
     }
 
     public void removeItem(int index) {
-        Item it = items.get(index);
+        Item item = items.get(index);
         items.remove(index);
 
-        if (it.isToAdd())
-            toAddItems.remove(it);
+        if (item.isToAdd())
+            toAddItems.remove(item);
     }
 
-    public void updateItemAvailability(int position, int available) {
-        Item it = items.get(position);
+    public void updateItemAvailability(int index, int available) {
+        Item item = items.get(index);
 
-        boolean oldNeeded = it.isToAdd();
+        boolean oldToAdd = item.isToAdd();
 
-        it.setAvailable(available);
+        item.setAvailable(available);
 
-        boolean newNeeded = it.isToAdd();
+        updateToAddItems(item, oldToAdd);
+    }
 
-        if (newNeeded != oldNeeded) {
-            if (newNeeded)
-                toAddItems.add(it);
+    public void updateToAddItems(Item item, boolean oldToAdd) {
+        if (item.isToAdd() != oldToAdd) {
+            if (oldToAdd)
+                toAddItems.remove(item);
 
             else
-                toAddItems.remove(it);
+                toAddItems.add(item);
         }
     }
 }

@@ -15,29 +15,25 @@ public class Item {
         setToAdd();
     }
 
-    public void setNeeded(int newNeeded) {
+    void setNeeded(int newNeeded) {
         this.needed = newNeeded;
-        this.toAdd = this.needed - this.available;
-        if (this.toAdd < 0)
-            this.toAdd = 0;
+        setToAdd();
     }
 
-    public void setAvailable(int newAvailable) {
+    void setAvailable(int newAvailable) {
         this.available = newAvailable;
-        this.toAdd = this.needed - this.available;
-        if (this.toAdd < 0)
-            this.toAdd = 0;
+        setToAdd();
     }
 
-    private void setToAdd() {
+    void setToAdd() {
         toAdd = needed - available > 0 ? needed - available : 0;
     }
 
-    public void setName(String name) {
+    void setName(String name) {
         this.name = name;
     }
 
-    public void setTimeDependent(boolean timeDependent) {
+    void setTimeDependent(boolean timeDependent) {
         this.timeDependent = timeDependent;
     }
 
