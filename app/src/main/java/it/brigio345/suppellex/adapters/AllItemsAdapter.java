@@ -66,11 +66,12 @@ public class AllItemsAdapter extends BaseExpandableListAdapter {
         if (convertView == null)
             convertView = inflater.inflate(R.layout.child_all_items, parent, false);
 
+        final EditText editText = convertView.findViewById(R.id.edit_text_new_available);
+
         if (listPosition != previousListPosition) {
             previousListPosition = listPosition;
 
             final Button button = convertView.findViewById(R.id.button_new_available);
-            final EditText editText = convertView.findViewById(R.id.edit_text_new_available);
 
             editText.setText("");
 
@@ -107,6 +108,9 @@ public class AllItemsAdapter extends BaseExpandableListAdapter {
                 }
             });
         }
+
+        editText.requestFocus();
+        inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
 
         return convertView;
     }
@@ -153,8 +157,7 @@ public class AllItemsAdapter extends BaseExpandableListAdapter {
     public void onGroupCollapsed(int groupPosition) {
         View view = activity.getCurrentFocus();
         if (view != null) {
-            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(),
-                    InputMethodManager.HIDE_NOT_ALWAYS);
+            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(),0);
         }
     }
 }
