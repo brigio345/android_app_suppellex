@@ -66,4 +66,8 @@ public class ItemsPagerAdapter extends FragmentPagerAdapter {
     public ActionMode getActionMode() {
         return allItemsFragment.getActionMode();
     }
+
+    public void collapseAllItemsGroup() {
+        allItemsFragment.collapseGroup();
+    }
 }

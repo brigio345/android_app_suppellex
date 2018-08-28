@@ -23,6 +23,7 @@ public class AllItemsFragment extends Fragment {
     private AllItemsAdapter allItemsAdapter;
     private MainActivity mainActivity;
     private ContextualActionBarCallback callback;
+    private int lastExpandedGroup = -1;
 
     public AllItemsFragment() {
         // Required empty public constructor
@@ -47,13 +48,11 @@ public class AllItemsFragment extends Fragment {
          * Let expand only the last clicked group
          */
         expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-            int previousGroup = -1;
-
             @Override
             public void onGroupExpand(int groupPosition) {
-                if (previousGroup != groupPosition)
-                    expandableListView.collapseGroup(previousGroup);
-                previousGroup = groupPosition;
+                if (lastExpandedGroup != groupPosition)
+                    expandableListView.collapseGroup(lastExpandedGroup);
+                lastExpandedGroup = groupPosition;
             }
         });
 
@@ -146,5 +145,10 @@ public class AllItemsFragment extends Fragment {
 
     public ActionMode getActionMode() {
         return callback.getActionMode();
+    }
+
+    public void collapseGroup() {
+        if (expandableListView.isGroupExpanded(lastExpandedGroup))
+            expandableListView.collapseGroup(lastExpandedGroup);
     }
 }

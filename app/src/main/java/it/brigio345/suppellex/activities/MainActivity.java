@@ -46,9 +46,6 @@ public class MainActivity extends AppCompatActivity {
         ViewPager mViewPager = findViewById(R.id.viewpager_main);
         mViewPager.setAdapter(itemsPagerAdapter);
 
-        final InputMethodManager inputMethodManager =
-                (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
@@ -56,13 +53,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 if (position == 1) {
-                    View view = getCurrentFocus();
-                    if (view != null) {
-                       inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(),0);
-                    }
+                    itemsPagerAdapter.collapseAllItemsGroup();
 
                     ActionMode actionMode = itemsPagerAdapter.getActionMode();
-
                     if (actionMode != null)
                         actionMode.finish();
                 }
@@ -90,6 +83,9 @@ public class MainActivity extends AppCompatActivity {
                 .setNegativeButton(R.string.cancel, null);
 
         final AlertDialog dialog = builder.create();
+
+        final InputMethodManager inputMethodManager =
+                (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
         dialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
